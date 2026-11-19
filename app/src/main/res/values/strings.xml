@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">My First Application</string>
+
+    <string name="jetpack_compose_description">Jetpack Compose is a modern set of tools for creating the user interface (UI) on Android developed by Google</string>
+</resources>
