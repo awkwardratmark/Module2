@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,11 +16,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -32,11 +28,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
@@ -127,10 +120,79 @@ fun TextVariantThree(){
         modifier = Modifier.padding(start = 48.dp).background(color = Color(0xFF5BB75D))
     )
 }
+
+//----------------------------------------------------------------------------
+
+
+
+@Preview(showBackground = true)
+@Composable
+fun HelloPreview() {
+    MyFirstApplicationTheme {
+        Column(modifier = Modifier.padding(16.dp) ){
+            Task(1, Color(0xffffcbe1))
+            Hello(name = "rat")
+            Spacer(modifier = Modifier.height(5.dp))
+            Hello(name = null)
+        }
+    }
+}
+
+@Preview(showBackground = true, name = "Portrait", showSystemUi = true, device = "spec:orientation=portrait,width=200dp,height=300dp")
+@Composable
+fun HelloPreviewPortrait(){
+    Column(modifier = Modifier.padding(vertical = 30.dp) ) {
+        MyFirstApplicationTheme {
+            Task(2, Color(0xffffdab4))
+            Hello("rat")
+        }
+    }
+}
+@Preview(showBackground = true, name = "Landscape", showSystemUi = true, device = "spec:orientation=landscape,width=300dp,height=200dp")
+@Composable
+fun HelloPreviewLandscape(){
+    Column(modifier = Modifier.padding(vertical = 30.dp) ) {
+        MyFirstApplicationTheme {
+            Task(2, Color(0xffffdab4))
+            Hello("rat")
+        }
+    }
+}
+@Preview(showBackground = true, name = "Round", showSystemUi = true, device = "spec:width=300dp,height=300dp,isRound=true")
+@Composable
+fun HelloPreviewRound(){
+    Box(
+        modifier = Modifier
+            .background(Color(0xfffae1a7))
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ){
+        Column(modifier = Modifier.padding()) {
+            MyFirstApplicationTheme {
+                Task(2, Color.White)
+                Hello("rat")
+            }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TextVariantPrev(){
+    Column(modifier = Modifier.padding()){
+        Task(3, Color(0xffdcccea))
+        TextVariantOne()
+        Spacer(Modifier.padding(vertical = 10.dp))
+        TextVariantTwo()
+        Spacer(Modifier.padding(vertical = 10.dp))
+        TextVariantThree()
+    }
+}
+
+
 @Preview(showBackground = true)
 @Composable
 fun Task4(){
-
     Column{
         Task(4, Color(0xFFC5B8FF))
         Text(
@@ -142,7 +204,7 @@ fun Task4(){
         Button(
             onClick = {}, modifier = Modifier.fillMaxWidth().padding(5.dp).shadow(4.dp),
             border = BorderStroke(2.dp, Color(0xFF424242)),
-            shape = RoundedCornerShape(16.dp), 
+            shape = RoundedCornerShape(16.dp),
             colors = ButtonColors(
                 containerColor = Color(0xFFB4B0B0),
                 contentColor = Color.Black,
@@ -150,7 +212,7 @@ fun Task4(){
                 disabledContentColor = Color.Black
             ),
 
-        )
+            )
         {Text("Click on me")}
 
         Task(5, Color(0xFFFFA2A2))
@@ -171,105 +233,6 @@ fun Task4(){
                 contentAlignment = Alignment.Center,
             )
             {Text("R A T", modifier = Modifier.padding(vertical = 16.dp))}
-
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//@Preview(showBackground = true)
-//@Composable
-//fun HelloPreview() {
-//    MyFirstApplicationTheme {
-//        Column(modifier = Modifier.padding(16.dp) ){
-//            Task(1, Color(0xffffcbe1))
-//            Hello(name = "rat")
-//            Spacer(modifier = Modifier.height(5.dp))
-//            Hello(name = null)
-//
-//
-//
-//        }
-//    }
-//}
-//
-//@Preview(showBackground = true, name = "Portrait", showSystemUi = true, device = "spec:orientation=portrait,width=200dp,height=300dp")
-//@Composable
-//fun HelloPreviewPortrait(){
-//    Column(modifier = Modifier.padding(vertical = 30.dp) ) {
-//        MyFirstApplicationTheme {
-//            Task(2, Color(0xffffdab4))
-//            Hello("rat")
-//        }
-//    }
-//}
-//@Preview(showBackground = true, name = "Landscape", showSystemUi = true, device = "spec:orientation=landscape,width=300dp,height=200dp")
-//@Composable
-//fun HelloPreviewLandscape(){
-//    Column(modifier = Modifier.padding(vertical = 30.dp) ) {
-//        MyFirstApplicationTheme {
-//            Task(2, Color(0xffffdab4))
-//            Hello("rat")
-//        }
-//    }
-//}
-//@Preview(showBackground = true, name = "Round", showSystemUi = true, device = "spec:width=300dp,height=300dp,isRound=true")
-//@Composable
-//fun HelloPreviewRound(){
-//    Box(
-//        modifier = Modifier
-//            .background(Color(0xfffae1a7))
-//            .fillMaxSize(),
-//        contentAlignment = Alignment.Center
-//    ){
-//        Column(modifier = Modifier.padding()) {
-//            MyFirstApplicationTheme {
-//                Task(2, Color.White)
-//                Hello("rat")
-//            }
-//        }
-//    }
-//}
-
-//@Preview(showBackground = true)
-//@Composable
-//fun TextVariantPrev(){
-//    Column(modifier = Modifier.padding()){
-//        Task(3, Color(0xffdcccea))
-//        TextVariantOne()
-//        Spacer(Modifier.padding(vertical = 10.dp))
-//        TextVariantTwo()
-//        Spacer(Modifier.padding(vertical = 10.dp))
-//        TextVariantThree()
-//    }
-//}
